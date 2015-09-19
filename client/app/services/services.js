@@ -12,11 +12,19 @@ angular.module('shortly.services', [])
     });
   };
 
-  return {
-    allLinks: allLinks
+  var shortenLink = function(urltoshorten) {
+    return $http({
+      method: 'POST',
+      url: '/api/links',
+      data: urltoshorten
+    }).then (function(response) {
+      console.log("Sucess in posting link", response)
+    })
   };
-
-
+  return {
+    allLinks: allLinks,
+    shortenLink: shortenLink
+  };
  })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
