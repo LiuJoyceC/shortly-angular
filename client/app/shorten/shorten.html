@@ -1,6 +1,6 @@
 <div class="navigation">
   <ul>
-    <li><a href="'/#links">All Links</a></li>
+    <li><a href="/#links">All Links</a></li>
     <li><a href="/#shorten">Shorten</a></li>
     <li><a href="/#">Signout</a></li>
   </ul>
@@ -8,10 +8,12 @@
 
 <div id='container'>
 <!-- Your code here -->
-  <form ng-submit="addLink()">
-    <input type="url" placeholder="Enter a new link" ng-model="url">
-    <button>Submit</button>
+  <form ng-submit="addLink()" name='shortlyForm' novalidate>
+    <input name='link' type="url" placeholder="Enter a new link" required ng-model="url" ng-class="{'error' : shortlyForm.$invalid && shortlyForm.$dirty}">
+    <button type="submit" value="Shorten" ng-disabled="shorlyForm.$invalid">Submit</button>
   </form>
+  <div ng-if="shortlyForm.link.$error.required && shortlyForm.$dirty">Please enter a URL</div>
+  <div ng-show="shortlyForm.link.$error.url && shortlyForm.$dirty">Please enter a valid URL!</div>
 </div>
 
 

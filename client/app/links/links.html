@@ -1,13 +1,33 @@
-<!-- Hello, {{ username }} -->
+
 <div id='container'>
 
   <!--Your html here -->
   <div class="navigation">
     <ul>
-      <li><a href="'/#links">All Links</a></li>
+      <li><a href="/#links">All Links</a></li>
       <li><a href="/#shorten">Shorten</a></li>
       <li><a href="/#" ng-click="signout()">Signout</a></li>
     </ul>
+  </div>
+
+  <form>
+    <input type="text" placeholder="Filter by search" ng-model="searchFilter">
+  </form>
+
+  <div class="link" ng-repeat="link in data.links | filter:searchFilter | orderBy:'visits'">
+    <!-- image -->
+    <img src="assets/redirect_icon.png">
+    <div class="linkInfo">
+      <div class="visits">{{ link.visits }}</div>
+      <div class="title">{{ link.title }}</div>
+      <div class="url">{{ link.url }}</div>
+      <div>
+      <a href="{{ link.base_url }}/{{ link.code }}">{{ link.base_url }}/{{ link.code }}</a>
+      </div>
+    <!-- title -->
+    <!-- url
+    short url -->
+    <!-- visitorcount -->
   </div>
 
 </div>
