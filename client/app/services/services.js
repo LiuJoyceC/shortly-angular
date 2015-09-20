@@ -52,6 +52,7 @@ angular.module('shortly.services', [])
       data: user
     })
     .then(function (resp) {
+      console.log('resp is ' + JSON.stringify(resp));
       return resp.data.token;
     });
   };
@@ -61,6 +62,7 @@ angular.module('shortly.services', [])
   };
 
   var signout = function () {
+    console.log('signout function has been run');
     $window.localStorage.removeItem('com.shortly');
     $location.path('/signin');
   };

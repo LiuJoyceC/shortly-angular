@@ -1,8 +1,14 @@
 <!-- Hello, {{ username }} -->
-<div id='container' ng-app='shortly.links'>
+<div id='container'>
 
   <!--Your html here -->
-  <div ng-controller='LinksController'></div>
+  <div class="navigation">
+    <ul>
+      <li><a href="'/#links">All Links</a></li>
+      <li><a href="/#shorten">Shorten</a></li>
+      <li><a href="/#" ng-click="signout()">Signout</a></li>
+    </ul>
+  </div>
 
 </div>
 

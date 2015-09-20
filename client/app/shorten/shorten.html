@@ -1,7 +1,15 @@
+<div class="navigation">
+  <ul>
+    <li><a href="'/#links">All Links</a></li>
+    <li><a href="/#shorten">Shorten</a></li>
+    <li><a href="/#">Signout</a></li>
+  </ul>
+</div>
+
 <div id='container'>
 <!-- Your code here -->
   <form ng-submit="addLink()">
-    <input type="text" ng-model="url">
+    <input type="url" placeholder="Enter a new link" ng-model="url">
     <button>Submit</button>
   </form>
 </div>
