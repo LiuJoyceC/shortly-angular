@@ -7,7 +7,6 @@ angular.module('shortly.services', [])
       method: 'GET',
       url: '/api/links'
     }).then (function(response) {
-      console.log(response.data);
       return response.data;
     });
   };
@@ -18,7 +17,6 @@ angular.module('shortly.services', [])
       url: '/api/links',
       data: urltoshorten
     }).then (function(response) {
-      console.log("Sucess in posting link", response)
     })
   };
   return {
@@ -27,7 +25,7 @@ angular.module('shortly.services', [])
   };
  })
 .factory('Auth', function ($http, $location, $window) {
-  // Don't touch this Auth service!!!
+  // Auth service
   // it is responsible for authenticating our user
   // by exchanging the user's username and password
   // for a JWT from the server
@@ -52,7 +50,6 @@ angular.module('shortly.services', [])
       data: user
     })
     .then(function (resp) {
-      console.log('resp is ' + JSON.stringify(resp));
       return resp.data.token;
     });
   };
@@ -62,7 +59,6 @@ angular.module('shortly.services', [])
   };
 
   var signout = function () {
-    console.log('signout function has been run');
     $window.localStorage.removeItem('com.shortly');
     $location.path('/signin');
   };

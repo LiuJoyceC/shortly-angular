@@ -15,7 +15,6 @@ angular.module('shortly', [
       templateUrl: 'app/auth/signup.html',
       controller: 'AuthController'
     })
-    // Your code here
     .when('/links', {
       templateUrl: 'app/links/links.html',
       controller: 'LinksController',
@@ -51,8 +50,6 @@ angular.module('shortly', [
   return attach;
 })
 .run(function ($rootScope, $location, Auth) {
-  console.log('app.run is being run');
-  //console.log('app.run is being run');
   // here inside the run phase of angular, our services and controllers
   // have just been registered and our app is ready
   // however, we want to make sure the user is authorized
