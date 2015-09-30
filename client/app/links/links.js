@@ -1,7 +1,6 @@
 angular.module('shortly.links', [])
 
 .controller('LinksController', function ($scope, Links, Auth) {
-  // Your code here
 
   console.log('Links is ' + JSON.stringify(Links));
   $scope.data = {};
@@ -15,7 +14,6 @@ angular.module('shortly.links', [])
     Auth.signout();
   }
 
-
   $scope.getLinks();
-  // $scope.link = {};
+
 });
