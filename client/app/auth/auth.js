@@ -13,6 +13,9 @@ angular.module('shortly.auth', [])
         $location.path('/links');
       })
       .catch(function (error) {
+        $scope.signinForm.$setPristine();
+        $scope.user = {};
+        $scope.invalidSignin = true;
         console.error(error);
       });
   };
@@ -24,6 +27,9 @@ angular.module('shortly.auth', [])
         $location.path('/links');
       })
       .catch(function (error) {
+        $scope.signupForm.$setPristine();
+        $scope.user = {};
+        $scope.invalidSignup = true;
         console.error(error);
       });
   };
