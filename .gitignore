@@ -15,7 +15,7 @@ Icon
 .Spotlight-V100
 .Trashes
 node_modules/
-db/
+data/db/
 client/lib
 
 # Floobits
