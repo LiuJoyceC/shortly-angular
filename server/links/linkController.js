@@ -42,7 +42,7 @@ module.exports = {
     var createLink = Q.nbind(Link.create, Link);
     var findLink = Q.nbind(Link.findOne, Link);
 
-    findLink({url: url})
+    findLink({url: url, username: username})
       .then(function (match) {
         if (match) {
           res.send(match);
