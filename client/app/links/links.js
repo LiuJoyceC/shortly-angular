@@ -1,9 +1,10 @@
 angular.module('shortly.links', [])
 
-.controller('LinksController', function ($scope, Links, Auth) {
+.controller('LinksController', function ($scope, $window, Links, Auth) {
 
-  console.log('Links is ' + JSON.stringify(Links));
   $scope.data = {};
+
+  $scope.username = $window.localStorage.getItem('username');
 
   $scope.getLinks = function() {
     Links.allLinks().then(function(links) {

@@ -1,12 +1,15 @@
-<div class="navigation">
-  <ul>
-    <li><a href="/#links">All Links</a></li>
-    <li><a href="/#shorten">Shorten</a></li>
-    <li><a href="/#">Signout</a></li>
-  </ul>
-</div>
 
 <div id='container'>
+
+  <h4 ng-if="username">Welcome, {{ username }}</h4>
+
+  <div class="navigation">
+    <ul>
+      <li><a href="/#links">All Links</a></li>
+      <li><a href="/#shorten">Shorten</a></li>
+      <li><a href="/#">Signout</a></li>
+    </ul>
+  </div>
 
   <form ng-submit="addLink()" name='shortlyForm' novalidate>
     <input name='link' type="url" placeholder="Enter a new link" required ng-model="url" ng-class="{'error' : shortlyForm.$invalid && shortlyForm.$dirty}">

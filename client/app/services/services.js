@@ -39,7 +39,7 @@ angular.module('shortly.services', [])
       data: user
     })
     .then(function (resp) {
-      return resp.data.token;
+      return {username: resp.config.data.username, token: resp.data.token};
     });
   };
 
@@ -50,7 +50,7 @@ angular.module('shortly.services', [])
       data: user
     })
     .then(function (resp) {
-      return resp.data.token;
+      return {username: resp.config.data.username, token: resp.data.token};
     });
   };
 
@@ -60,6 +60,7 @@ angular.module('shortly.services', [])
 
   var signout = function () {
     $window.localStorage.removeItem('com.shortly');
+    $window.localStorage.removeItem('username');
     $location.path('/signin');
   };
 

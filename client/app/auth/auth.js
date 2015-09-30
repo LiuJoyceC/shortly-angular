@@ -8,8 +8,9 @@ angular.module('shortly.auth', [])
 
   $scope.signin = function () {
     Auth.signin($scope.user)
-      .then(function (token) {
-        $window.localStorage.setItem('com.shortly', token);
+      .then(function (data) {
+        $window.localStorage.setItem('username', data.username);
+        $window.localStorage.setItem('com.shortly', data.token);
         $location.path('/links');
       })
       .catch(function (error) {
@@ -22,8 +23,9 @@ angular.module('shortly.auth', [])
 
   $scope.signup = function () {
     Auth.signup($scope.user)
-      .then(function (token) {
-        $window.localStorage.setItem('com.shortly', token);
+      .then(function (data) {
+        $window.localStorage.setItem('username', data.username);
+        $window.localStorage.setItem('com.shortly', data.token);
         $location.path('/links');
       })
       .catch(function (error) {
