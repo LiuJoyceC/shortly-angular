@@ -8,6 +8,7 @@ angular.module('shortly.shorten', [])
 
   $scope.addLink = function() {
     $scope.link.url = $scope.url;
+    $scope.link.username = $scope.username;
     $scope.shortlyForm.$setPristine();
     $scope.url = '';
     Links.shortenLink($scope.link);

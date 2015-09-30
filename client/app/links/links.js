@@ -7,7 +7,7 @@ angular.module('shortly.links', [])
   $scope.username = $window.localStorage.getItem('username');
 
   $scope.getLinks = function() {
-    Links.allLinks().then(function(links) {
+    Links.allLinks($scope.username).then(function(links) {
       $scope.data.links = links;
     });
   }
