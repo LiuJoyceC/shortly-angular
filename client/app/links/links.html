@@ -15,7 +15,7 @@
     <input type="text" placeholder="Filter by search" ng-model="searchFilter">
   </form>
 
-  <div class="link" ng-repeat="link in data.links | filter:searchFilter | orderBy:'visits'">
+  <div class="link" ng-repeat="link in data.links | filter:searchFilter | orderBy:'-visits'">
     <!-- image -->
     <img src="assets/redirect_icon.png">
     <div class="linkInfo">
@@ -23,7 +23,7 @@
       <div class="title">{{ link.title }}</div>
       <div class="url">{{ link.url }}</div>
       <div>
-      <a href="{{ link.base_url }}/{{ link.code }}">{{ link.base_url }}/{{ link.code }}</a>
+      <a href="{{ link.base_url }}/api/links/{{ link.code }}">{{ link.base_url }}/api/links/{{ link.code }}</a>
       </div>
 
   </div>
