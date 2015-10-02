@@ -7,30 +7,33 @@
     <ul>
       <li><a href="/#links">All Links</a></li>
       <li><a href="/#shorten">Shorten</a></li>
-      <li><a href="/#">Signout</a></li>
+      <li class="signout"><a href="/#">Signout</a></li>
     </ul>
   </div>
 
   <form ng-submit="addLink()" name='shortlyForm' novalidate>
     <input name='link' type="url" placeholder="Enter a new link" required ng-model="url" ng-class="{'error' : shortlyForm.$invalid && shortlyForm.$dirty}" ng-change="urlInvalid = false">
     <button type="submit" value="Shorten" ng-disabled="shorlyForm.$invalid">Submit</button>
-  </form><img ng-if="adding" src="assets/spiffygif_46x46.gif">
+  </form><img class="spiffy" ng-if="adding" src="assets/spiffygif_46x46.gif">
   <div ng-if="urlInvalid">URL is invalid</div>
   <div ng-if="shortlyForm.link.$error.required && shortlyForm.$dirty">Please enter a URL</div>
   <div ng-show="shortlyForm.link.$error.url && shortlyForm.$dirty">Please enter a valid URL!</div>
 
-  <div class="link" ng-repeat="link in addedLinks">
-  <!-- image -->
-    <img src="{{ (link.icon_url !== '/' && link.icon_url) || 'assets/redirect_icon.png' }}" style="width:42px;height:48px">
-    <div class="linkInfo">
-      <div class="visits">{{ link.visits }} visit{{ link.visits === 1 ? '' : 's' }}</div>
-      <div class="title">{{ link.title }}</div>
-      <div class="url">{{ truncateUrl(link.url) }}</div>
-      <div>
-      <a href="{{ link.base_url }}/api/links/{{ link.code }}">{{ link.base_url }}/api/links/{{ link.code }}</a>
-      </div>
+  <div class="link" ng-repeat="link in addedLinks" ng-click="link.visits = link.visits + 1">
+    <a href="{{ link.base_url }}/api/links/{{ link.code }}" target="_blank">
+      <!-- image -->
+      <img src="{{ (link.icon_url !== '/' && link.icon_url) || 'assets/redirect_icon.png' }}" style="width:42px;height:48px">
+      <div class="linkInfo">
 
-    </div>
+        <div class="visits">{{ link.visits }} visit{{ link.visits === 1 ? '' : 's' }}</div>
+        <div class="title">{{ link.title }}</div>
+        <div class="url">{{ truncateUrl(link.url) }}</div>
+        <div class="shortened">
+          {{ link.base_url }}/api/links/{{ link.code }}
+        </div>
+
+      </div>
+    </a>
   </div>
 
 </div>

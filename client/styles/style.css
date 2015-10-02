@@ -1,11 +1,33 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   margin: 0;
-  margin-top: 10px;
+  padding: 20px;
   font-family: arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+
+  background: -webkit-linear-gradient(to right bottom, purple, #F0D0BC 40%, white);
+  background:    -moz-linear-gradient(to right bottom, purple, #F0D0BC 40%, white);
+  background:         linear-gradient(to right bottom, purple, #F0D0BC 40%, white);
+  background-attachment: fixed;
+  background-color: #F0D0BC;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 a {
-  color: #333;
+  color: black;
   font-size: 14px;
   text-decoration: none;
 }
@@ -18,7 +40,10 @@ h1 {
 .navigation {
   width: 100%;
   height: 40px;
-  background-color: #eee;
+  background: inherit;
+  border: 2px solid black/*#1F1B88 #1D1350*/;
+  font-weight: bold;
+  color: black;
 }
 
 .navigation ul {
@@ -31,9 +56,13 @@ h1 {
   float: left;
 }
 
+.navigation .signout {
+  float: right;
+}
+
 .navigation li a {
   width: 100px;
-  height: 20px;
+  height: 36px;
   line-height: 20px;
   padding: 10px;
   display: block;
@@ -41,7 +70,7 @@ h1 {
 }
 
 .navigation li a:hover {
-  background-color: #ddd;
+  background-color: purple;
 }
 
 .navigation li a.selected {
@@ -61,7 +90,7 @@ h1 {
 }
 
 .link:hover {
-  background-color: #efe;
+  background-color: purple;
 }
 
 .link img {
@@ -93,6 +122,10 @@ h1 {
   margin-left: 55px;
 }
 
+.shortened {
+  color: #2A2A2A;
+}
+
 form {
   margin: 10px;
 }
@@ -103,6 +136,8 @@ input {
   font-size: 13px;
   padding: 5px;
   margin-bottom: 5px;
+  background: rgba(255,255,255,0.3);
+  font-weight: bold;
 }
 
 input[type=url] {
@@ -113,6 +148,33 @@ input[type=url]:focus {
   outline: none;
 }
 
+::-webkit-input-placeholder {
+   color: #4C4C4C;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #4C4C4C;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #4C4C4C;
+}
+
+:-ms-input-placeholder {
+   color: #4C4C4C;
+}
+
+
+button {
+  background-color: inherit;
+  font-weight: bold;
+  border-radius: 20%;
+}
+
+.spiffy {
+  border-radius: 50%;
+  opacity: 0.3;
+}
 
 .error {
   border: red solid 4px;
