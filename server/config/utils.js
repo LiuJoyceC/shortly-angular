@@ -1,6 +1,8 @@
 var request = require('request'),
     Q       = require('q'),
-    rValidUrl = /^(?!mailto:)(?:(?:https?|ftp):\/\/)?(?:\S+(?::\S*)?@)?(?:(?:(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[0-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))|localhost)(?::\d{2,5})?(?:\/[^\s]*)?$/i;
+    rValidUrl = /^(?!mailto:)(?:(?:https?|ftp):\/\/)?(?:\S+(?::\S*)?@)?(?:(?:(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[0-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))|localhost)(?::\d{2,5})?(?:\/[^\s]*)?$/i,
+    urlMod = require('url'),
+    rp = require('request-promise');
 
 
 module.exports = {
@@ -21,6 +23,25 @@ module.exports = {
 
   isValidUrl: function(url) {
     return url.match(rValidUrl);
+  },
+
+  getIcon: function(url) {
+    var parsed = urlMod.parse(url);
+    var iconUrl = parsed.protocol + '//' + parsed.hostname + '/favicon.ico';
+    console.log('iconUrl: ', iconUrl);
+
+    return rp(iconUrl)
+      .then(function(data) {
+        if (data === '') {
+          return '/';
+        } else {
+          return iconUrl;
+        }
+      })
+      .catch(function() {
+        return '/';
+      });
   }
+
 };
 

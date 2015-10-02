@@ -19,12 +19,27 @@ angular.module('shortly.services', [])
       url: '/api/links',
       data: urltoshorten,
     }).then(function(response) {
+      console.log('shortenLink responded');
+      console.log(response);
+      return response.data;
+    }).catch(function(error) {
+      if (error) {
+        return null;
+      }
     });
+  };
+
+  var truncateUrl = function(url) {
+    if (url.length > 45) {
+      return url.slice(0,42) + '...';
+    }
+    return url;
   };
 
   return {
     allLinks: allLinks,
     shortenLink: shortenLink,
+    truncateUrl: truncateUrl,
   };
 })
 .factory('Auth', function($http, $location, $window) {

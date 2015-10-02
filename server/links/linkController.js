@@ -34,6 +34,8 @@ module.exports = {
 
   newLink: function (req, res, next) {
     var url = req.body.url;
+    //var title = url; // if title not found later, defaults to url
+    var iconUrl = '/';
     var username = req.body.username;
     if (!util.isValidUrl(url)) {
       return next(new Error('Not a valid url'));
@@ -47,17 +49,27 @@ module.exports = {
         if (match) {
           res.send(match);
         } else {
-          return  util.getUrlTitle(url);
+          //return  util.getUrlTitle(url);
+          return util.getIcon(url);
         }
       })
+      .then(function (icon) {
+        if (icon) {
+          iconUrl = icon;
+        }
+        return util.getUrlTitle(url);
+      })
+
       .then(function (title) {
+        console.log('title: ', title);
         if (title) {
           var newLink = {
             url: url,
             visits: 0,
             base_url: req.headers.origin,
             title: title,
-            username: username
+            username: username,
+            icon_url: iconUrl,
           };
           return createLink(newLink);
         }

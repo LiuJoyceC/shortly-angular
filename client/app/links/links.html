@@ -17,15 +17,17 @@
 
   <div class="link" ng-repeat="link in data.links | filter:searchFilter | orderBy:'-visits'">
     <!-- image -->
-    <img src="assets/redirect_icon.png">
+    <img src="{{ (link.icon_url !== '/' && link.icon_url) || 'assets/redirect_icon.png' }}" style="width:42px;height:48px">
     <div class="linkInfo">
-      <div class="visits">{{ link.visits }}</div>
+
+      <div class="visits">{{ link.visits }} visit{{ link.visits === 1 ? '' : 's' }}</div>
       <div class="title">{{ link.title }}</div>
-      <div class="url">{{ link.url }}</div>
+      <div class="url">{{ truncateUrl(link.url) }}</div>
       <div>
       <a href="{{ link.base_url }}/api/links/{{ link.code }}">{{ link.base_url }}/api/links/{{ link.code }}</a>
       </div>
 
+    </div>
   </div>
 
 </div>

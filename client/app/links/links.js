@@ -10,10 +10,13 @@ angular.module('shortly.links', [])
     Links.allLinks($scope.username).then(function(links) {
       $scope.data.links = links;
     });
-  }
+  };
+
   $scope.signout =function() {
     Auth.signout();
-  }
+  };
+
+  $scope.truncateUrl = Links.truncateUrl;
 
   $scope.getLinks();
 
