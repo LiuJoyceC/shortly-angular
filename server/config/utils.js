@@ -28,7 +28,6 @@ module.exports = {
   getIcon: function(url) {
     var parsed = urlMod.parse(url);
     var iconUrl = parsed.protocol + '//' + parsed.hostname + '/favicon.ico';
-    console.log('iconUrl: ', iconUrl);
 
     return rp(iconUrl)
       .then(function(data) {

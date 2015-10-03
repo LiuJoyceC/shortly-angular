@@ -19,8 +19,6 @@ angular.module('shortly.services', [])
       url: '/api/links',
       data: urltoshorten,
     }).then(function(response) {
-      console.log('shortenLink responded');
-      console.log(response);
       return response.data;
     }).catch(function(error) {
       if (error) {
