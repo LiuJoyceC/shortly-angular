@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "karma start --browsers PhantomJS"
+    "test": "karma start --browsers PhantomJS",
+    "postinstall": "bower install"
   },
   "author": "",
   "license": "ISC",
@@ -41,6 +42,7 @@
     "passport-local": "^1.0.0",
     "q": "^1.0.1",
     "request": "^2.36.0",
-    "request-promise": "^0.4.3"
+    "request-promise": "^0.4.3",
+    "bower": "^1.5.2"
   }
 }
