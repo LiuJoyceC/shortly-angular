@@ -3,7 +3,14 @@
 
 var app = express();
 
-mongoose.connect('mongodb://localhost/shortly'); // connect to mongo database named shortly
+// On local computer when testing, will default to second localhost/shortly
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/shortly', function(error) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('mongo connected');
+  }
+}); // connect to mongo database named shortly
 
 // configure our server with all the middleware and and routing
 require('./config/middleware.js')(app, express);
