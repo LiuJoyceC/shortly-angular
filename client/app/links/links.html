@@ -16,7 +16,7 @@
   </form>
 
   <div class="link" ng-repeat="link in data.links | filter:searchFilter | orderBy:'-visits'" ng-click="link.visits = link.visits + 1">
-    <a href="{{ link.base_url }}/api/links/{{ link.code }}" target="_blank">
+    <a href="{{ link.base_url }}/{{ link.code }}" target="_blank">
       <!-- image -->
       <img src="{{ (link.icon_url !== '/' && link.icon_url) || 'assets/redirect_icon.png' }}" style="width:42px;height:48px">
       <div class="linkInfo">
@@ -25,7 +25,7 @@
         <div class="title">{{ link.title }}</div>
         <div class="url">{{ truncateUrl(link.url) }}</div>
         <div class="shortened">
-          {{ link.base_url }}/api/links/{{ link.code }}
+          {{ link.base_url }}/{{ link.code }}
         </div>
 
       </div>
