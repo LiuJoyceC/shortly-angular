@@ -19,8 +19,8 @@
   <div ng-if="shortlyForm.link.$error.required && shortlyForm.$dirty">Please enter a URL</div>
   <div ng-show="shortlyForm.link.$error.url && shortlyForm.$dirty">Please enter a valid URL!</div>
 
-  <div class="link" ng-repeat="link in addedLinks" ng-click="link.visits = link.visits + 1">
-    <a href="{{ link.base_url }}/{{ link.code }}" target="_blank">
+  <div class="link" ng-repeat="link in addedLinks">
+    <a href="{{ link.base_url }}/{{ link.code }}" target="_blank" ng-click="link.visits = link.visits + 1">
       <!-- image -->
       <img src="{{ (link.icon_url !== '/' && link.icon_url) || 'assets/redirect_icon.png' }}" style="width:42px;height:48px">
       <div class="linkInfo">
@@ -28,9 +28,8 @@
         <div class="visits">{{ link.visits }} visit{{ link.visits === 1 ? '' : 's' }}</div>
         <div class="title">{{ link.title }}</div>
         <div class="url">{{ truncateUrl(link.url) }}</div>
-        <div class="shortened">
-          {{ link.base_url }}/{{ link.code }}
-        </div>
+        <div class="shortened"><a><input class="short-url" type="text" value="{{ link.base_url }}/{{ link.code }}" onclick="this.select()" readonly>
+        </a></div>
 
       </div>
     </a>
